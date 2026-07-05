@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi App Salud</title>
+<style>
+body { background-color: #121212; color: #ffffff; font-family: sans-serif; padding: 20px; }
+.card { background: #1e1e1e; padding: 20px; border-radius: 15px; }
+input, button { width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; border: none; font-size: 16px; }
+input { background: #333; color: white; }
+button { background: #ff6600; color: white; font-weight: bold; cursor: pointer; }
+</style>
+</head>
+<body>
+<h1>Salud</h1>
+<div class="card">
+<input type="text" id="ejercicio" placeholder="Ejercicio (ej: Abdominales)">
+<input type="number" id="cantidad" placeholder="Cantidad">
+<input type="number" id="tiempo" placeholder="Tiempo (min)">
+<button onclick="enviarDatos()">Guardar</button>
+</div>
+
+<script>
+function enviarDatos() {
+const url = "TU_URL_DE_APPS_SCRIPT_AQUI"; // REEMPLAZA ESTO
+const datos = {
+ejercicio: document.getElementById('ejercicio').value,
+cantidad: document.getElementById('cantidad').value,
+tiempo: document.getElementById('tiempo').value
+};
+fetch(url, {
+method: 'POST',
+mode: 'no-cors',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify(datos)
+}).then(() => alert('¡Datos guardados!'));
+}
+</script>
+</body>
+</html>
